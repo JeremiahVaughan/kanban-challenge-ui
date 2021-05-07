@@ -1,0 +1,50 @@
+.swimming-lanes-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.swimming-lane-container {
+  width: 35vh;
+  margin: 5vh 3vh 3vh;
+}
+
+.swimming-lane-header {
+  margin-bottom: 1.5vh;
+  text-align: center;
+}
+
+.scroll-window-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-card-button {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.saved-ticket {
+  cursor: grabbing;
+}
+
+/**
+  Space is required so that even if there are no tickets present in the list
+  we can still move tickets from other lists over.
+ */
+.drop-list {
+  display: flex;
+  justify-content: center;
+  min-width: 33vh;
+  min-height: 45vh;
+}
+
+.swimming-lane-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

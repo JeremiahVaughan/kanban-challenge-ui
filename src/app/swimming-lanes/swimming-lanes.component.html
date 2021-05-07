@@ -1,0 +1,44 @@
+<div class="swimming-lanes-container"
+     cdkDropListGroup>
+  <div *ngFor="let swimmingLaneDefinition of swimmingLaneDefinitions"
+       class="swimming-lane-container">
+    <mat-card
+      [style]="'background-color:' + swimmingLaneDefinition.backdropColor"
+      class="swimming-lane-header mat-display-1">
+      {{ swimmingLaneDefinition.title }}
+    </mat-card>
+    <mat-card
+      class="swimming-lane-body"
+      [style]="'background-color:' + swimmingLaneDefinition.backdropColor">
+      <cdk-virtual-scroll-viewport
+        [itemSize]="10"
+        class="drop-list"
+        [attr.id]="swimmingLaneDefinition.id"
+        cdkDropList
+        [cdkDropListData]="getTickets(swimmingLaneDefinition.id).value"
+        (cdkDropListDropped)="drop($event)">
+        <app-ticket
+          *ngFor="let ticket of getTickets(swimmingLaneDefinition.id).value"
+          class="saved-ticket"
+          cdkDrag
+          [ticket]="ticket">
+        </app-ticket>
+        <app-ticket
+          *ngIf="ticketService.isCreatingTicket && isBacklogSwimmingLane(swimmingLaneDefinition)"
+          (ticketCreated)="onTicketCreated()">
+        </app-ticket>
+      </cdk-virtual-scroll-viewport>
+      <button
+        *ngIf="isBacklogSwimmingLane(swimmingLaneDefinition)"
+        [disabled]="ticketService.isCreatingTicket"
+        (click)="onAddCard()"
+        mat-button
+        class="add-card-button">
+        <mat-icon>
+          add
+        </mat-icon>
+        <span> Add Card</span>
+      </button>
+    </mat-card>
+  </div>
+</div>

@@ -22,6 +22,7 @@ speed-measure-plugin*.json
 *.launch
 .settings/
 *.sublime-workspace
+kanban-challenge-ui.iml
 
 # IDE - VSCode
 .vscode/*

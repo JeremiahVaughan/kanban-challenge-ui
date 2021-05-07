@@ -1,27 +1,21 @@
-# KanbanChallengeUi
+# KanbanChallenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+## Setup
 
-## Development server
+Note: I used npm 6.14.7 and nodejs 14.8.0. If you should need to install the angular CLI then you can use 'npm install -g @angular/cli'
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run 'npm install' from the command line in the root of this project to ensure all external packages are installed.
 
-## Code scaffolding
+Run 'npm run start' from the command line in the root of this project to get the server project running.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Go to http://localhost:4200 in your browser to start using the app.
 
-## Build
+## Styling Considerations
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+For the theme, I chose to go with a dark theme and heavily relied on flex box for a responsive design.
 
-## Running unit tests
+Using angular material as it does a ton of the work for me and is easily customizable.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Using scss instead of css.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Avoided using static units like px as much as possible, so the UI would be more responsive to different monitors.

@@ -1,0 +1,53 @@
+<mat-card
+  (mousedown)="selectTicket()"
+  [style]="ticket?.selected || !ticket ? 'border: .2rem solid red' : ''"
+  class="ticket-container">
+  <div class="ticket-body">
+    <button
+      [disabled]="!isLeftArrowUsable()"
+      class="ticket-move-button"
+      (click)="moveTicketLeft()"
+      mat-icon-button>
+      <mat-icon>{{ isLeftArrowUsable() ? 'arrow_backward' : '' }}</mat-icon>
+    </button>
+    <form [formGroup]="form">
+      <mat-form-field
+        class="description-control-container">
+      <textarea
+        [formControlName]="DESCRIPTION_FORM_CONTROL_NAME"
+        class="description-control"
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+        placeholder="Description">
+      </textarea>
+        <mat-error>
+          {{ form.get(DESCRIPTION_FORM_CONTROL_NAME)?.errors?.required ? 'Value Required' : 'Invalid Input' }}
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <button
+      [disabled]="!isRightArrowUsable()"
+      class="ticket-move-button"
+      (click)="moveTicketRight()"
+      mat-icon-button>
+      <mat-icon>{{ isRightArrowUsable() ? 'arrow_forward' : ''}}</mat-icon>
+    </button>
+  </div>
+  <div class="footer">
+    <span class="created-date">
+      {{ ticket?.createdDate ? (ticket.createdDate | date) : 'Creating ...'}}
+    </span>
+    <span *ngIf="!ticketService.isCreatingTicket">
+      {{ ticket.createdBy }}
+    </span>
+    <button
+      *ngIf="!ticket && ticketService.isCreatingTicket"
+      (click)="onCreateTicket()"
+      color="accent"
+      mat-raised-button>
+      Done
+    </button>
+  </div>
+</mat-card>
