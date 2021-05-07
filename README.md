@@ -8,6 +8,8 @@ Run 'npm install' from the command line in the root of this project to ensure al
 
 Run 'npm run start' from the command line in the root of this project to get the server project running.
 
+Make sure the server project is running: https://github.com/JeremiahVaughan/kanban-challenge-service.git
+
 Go to http://localhost:4200 in your browser to start using the app.
 
 ## Styling Considerations
