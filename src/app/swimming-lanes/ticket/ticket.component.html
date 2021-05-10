@@ -11,6 +11,16 @@
       <mat-icon>{{ isLeftArrowUsable() ? 'arrow_backward' : '' }}</mat-icon>
     </button>
     <form [formGroup]="form">
+      <mat-form-field>
+        <mat-select
+          [formControlName]="DROP_DOWN">
+          <mat-option *ngFor="let option of options"
+                      [value]="option.value">
+            {{ option.key }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <mat-form-field
         class="description-control-container">
       <textarea

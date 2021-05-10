@@ -19,6 +19,8 @@ export class TicketComponent implements OnInit {
 
   form!: FormGroup;
   DESCRIPTION_FORM_CONTROL_NAME = 'descriptionFormControlName';
+  DROP_DOWN = 'dropDown';
+  options: any[] = [];
 
   constructor(public ticketService: TicketService) {}
 
@@ -33,8 +35,11 @@ export class TicketComponent implements OnInit {
           '', [
         Validators.required,
         Validators.pattern('[A-Za-z0-9 .,]*')]
+      ),
+      [this.DROP_DOWN]: new FormControl(
+        ''
       )
-    })
+    });
 
     /**
      * The ticket description is currently not editable after its creation per current requirements.
@@ -42,6 +47,18 @@ export class TicketComponent implements OnInit {
     if (this.ticket?.description) {
       this.form.get(this.DESCRIPTION_FORM_CONTROL_NAME)?.disable();
     }
+
+    let filterResult = [];
+
+    this.ticketService.getApiItems().subscribe(res => {
+      filterResult = res.results.map((item: any) => {
+        let fullName = item.name.title + ' ' + item.name.first + ' ' + item.name.last;
+        return {value: fullName.toLocaleUpperCase(), key: fullName, gender: item.gender}
+      });
+      this.options = filterResult.filter((person: any) => {
+        return person.gender === 'male';
+      });
+    });
   }
 
   onCreateTicket() {
