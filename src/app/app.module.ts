@@ -14,7 +14,6 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ScrollingModule} from "@angular/cdk/scrolling";
-import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     MatInputModule,
     DragDropModule,
-    ScrollingModule,
-    MatSelectModule
+    ScrollingModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

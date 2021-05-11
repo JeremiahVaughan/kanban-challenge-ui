@@ -4,7 +4,6 @@ import {Ticket} from "../../model/ticket";
 import {environment} from "../../../environments/environment";
 import {SwimmingLane} from "../../model/swimming-lane";
 import {KeyValue} from "@angular/common";
-import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +19,6 @@ export class TicketService {
   ticketLists: Map<SwimmingLane, Ticket[]> = new Map();
   isCreatingTicket = false;
 
-  private testUrl = 'https://randomuser.me/api/?results=25';
-
   constructor(private httpClient: HttpClient) {
   }
 
@@ -31,10 +28,6 @@ export class TicketService {
     }, error => {
       console.error('Get all Tickets called failed due to: ', error);
     });
-  }
-
-  getApiItems(): Observable<any> {
-    return this.httpClient.get<any>(this.testUrl);
   }
 
   /**
